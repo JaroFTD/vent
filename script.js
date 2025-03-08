@@ -37,20 +37,16 @@ let sumP = document.querySelector('[data-sumP]');
 let sumVv = document.querySelector('[data-sumVv]');
 let sumRpr = document.querySelector('[data-sumRpr]');
 
-// window.addEventListener('dblclick', function (e) {
-//    const target = e.target;
-//    const copy = target.innerHTML;
-//    const titleTwo = document.createElement('h2');
-//    target.parentElement.append(input);
-
-// });
-
 let inputs = document.querySelectorAll('input');
+
 
 for (let elem = 0; elem < inputs.length; elem++){
    inputs[elem].addEventListener('keydown', function (event) {
       if (event.key === 'Enter') {
          const target = event.target;
+         let maths = document.querySelectorAll('math');
+         let buttons = document.querySelectorAll('button');
+
          if (target.parentElement.tagName == 'P' || target.parentElement.tagName == 'LABEL') {
             let p = target.parentElement.textContent;
             p += this.value;
@@ -242,6 +238,15 @@ for (let elem = 0; elem < inputs.length; elem++){
             Rpr = (2.6 * Number(P) * Math.pow(Number(Vv), 2)) / 2;
             sumRpr.textContent = Number.isInteger(Rpr) ? Rpr : Rpr.toFixed(2);
          }
+
+         for (let ii = 0; ii < maths.length; ii++){
+            let mathInputs = maths[ii].querySelectorAll('input');
+            if (!mathInputs.length) {
+               maths[ii].parentElement.classList.add('_active');
+               buttons[ii].disabled = false;
+
+            }
+         }
       }
    });
 }
@@ -255,3 +260,29 @@ function allValue(item, value) {
       items[i].remove();
    }
 }
+
+
+window.addEventListener('click', function (event) {
+   let target = event.target;
+   if (target.type == 'button') {
+      if (target.parentElement.classList.contains('_active')) {
+         let parent = target.parentElement;
+         let child = parent.querySelector('math');
+         if (child) {
+            const dummy = document.createElement("textarea");
+            document.body.appendChild(dummy);
+            dummy.value = `<math xmlns="http://www.w3.org/1998/Math/MathML">` + child.innerHTML + `</math>`;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+         }
+      }
+   }
+});
+
+
+function copyHTML(item) {
+   let math = document.querySelectorAll('math')[item];
+   console.log(math);
+}
+
