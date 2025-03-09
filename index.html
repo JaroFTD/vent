@@ -8,12 +8,31 @@
 </head>
 
 <body>
+   <div>Объект: <input type="text" placeholder="Введите объект" data-object-title></div>
+   <p>Район строительства - <input type="text" placeholder="Введите город" data-citi></p>
+   <label for="">Рассмотрим помещение № <input type="text" placeholder="Введите номер" data-number-office></label><br><br>
+   <label for="">A = <input type="text" placeholder="Введите длину помещения" data-length-room></label><br><br>
+   <label for="">B = <input type="text" placeholder="Введите ширину помещения" data-width-room></label><br><br>
+   <label for="">Hп = <input type="text" placeholder="Введите высоту помещения" data-height-room></label><br><br>
+   <label for="">температура внутреннего воздуха L = <input type="text" placeholder="Введите значение" data-сalculated-air></label><br><br>
+   <label for="">tв = <input type="text" placeholder="Введите значение" data-degree-internal></label><br><br>
+   <label for="">h_(р.з.) – <input type="text" placeholder="Введите значение" data-height-working></label><br><br>
+   А_факт = <label for=""><input type="text" placeholder="Введите значение" data-afact></label><br><br>
+   m = <label for=""><input type="text" placeholder="Введите значение" data-speed-coefficient></label><br><br>
+   n = <label for=""><input type="text" placeholder="Введите значение" data-temperature-coefficient></label><br><br>
+   Для системы с расходом L = <label for=""><input type="text" placeholder="Введите значение" data-system-control></label>
+
+
+
+
+
+
    <h1>1. Исходные данные для проектирования системы вентиляции</h1>
    <div>
-      <input type="text" placeholder="Введите объект">
+      <input type="text" placeholder="Введите объект" data-object-title>
       <!-- <h2>1.1. Общестевнное здание: Комплекс со зрительным залом на 300 мест</h2> -->
    </div>
-   <p>1.2. Район строительства - <input type="text" placeholder="Введите город"></p>
+   <p>1.2. Район строительства - <input type="text" placeholder="Введите город" data-citi></p>
    <p>1.3. Климатические данные</p>
    <h2>2. Организация воздухообмена в помещениях</h2>
    <p>Площадь поперечного сечения каналов, воздуховодов, живого сечения воздухораспределителей, м2:</p>
@@ -30,7 +49,7 @@
       сводим в таблицу:</p>
    <h2>3. Расчет воздухораспределения для помещения большого объема с вентиляцией </h2>
    <div>
-      <label for="">Рассмотрим помещение № <input type="text" placeholder="Введите номер"></label> – Кабинет
+      <label for="">Рассмотрим помещение № <input type="text" placeholder="Введите номер" data-number-office></label> – Кабинет
       стоматолога. Размеры расчётного помещения <label for="">A = <input type="text"
             placeholder="Введите длину помещения" data-length-room></label> м (длина), <label for="">B = <input
             type="text" placeholder="Введите ширину помещения" data-width-room></label> м (ширина), <label for="">Hп =
@@ -183,7 +202,7 @@
          </msub> 
          <mo>=</mo>
          <mtext>
-            <label for=""><input type="text" placeholder="Введите значение" data-temperature-m></label>
+            <label for=""><input type="text" placeholder="Введите значение" data-degree-internal></label>
          </mtext>
          <mo>-</mo>
          <mn>18</mn>
@@ -619,7 +638,7 @@
                <mo>+</mo>
                <mo>(</mo>
                <mtext>
-                  <label for=""><input type="text" placeholder="Введите значение" data-plotSp></label>
+                  <label for=""><input type="text" placeholder="Введите значение" data-degree-internal></label>
                </mtext>
                <mo>)</mo>
             </mrow>

@@ -1,6 +1,6 @@
 'use strict';
 
-let d, e, f, g, H, i, j, k, l, m, n, o;
+let d, e, f, g, H, i, j, k, l, m, n, o, no, ot, dc;
 
 let x;
 let Lo;
@@ -58,6 +58,18 @@ for (let elem = 0; elem < inputs.length; elem++){
             this.parentElement.append(titleTwo);
             this.remove();
          }
+         if (this.hasAttribute('data-object-title')) {
+            ot = this.value;
+            allValue('[data-object-title]', ot);
+         }
+         if (this.hasAttribute('data-citi')) {
+            dc = this.value;
+            allValue('[data-citi]', dc);
+         }
+         if (this.hasAttribute('data-number-office')) {
+            no = this.value;
+            allValue('[data-number-office]', no);
+         }
          if (this.hasAttribute('data-length-room')) {
             d = this.value;
             allValue('[data-length-room]', d);
@@ -76,6 +88,7 @@ for (let elem = 0; elem < inputs.length; elem++){
          }
          if (this.hasAttribute('data-degree-internal')) {
             H = this.value;
+            allValue('[data-degree-internal]', H);
          }
          if (this.hasAttribute('data-height-working')) {
             i = this.value;
@@ -131,9 +144,9 @@ for (let elem = 0; elem < inputs.length; elem++){
             sumVo.textContent = Number.isInteger(Vo) ? Vo : Vo.toFixed(2);
          }
 
-         if (m) {
-            m = m.split(',').join('.');
-            Tx = Number(m) - 18;
+         if (H) {
+            H = H.split(',').join('.');
+            Tx = Number(H) - 18;
             sumTx.textContent = Number.isInteger(Tx) ? Tx : Tx.toFixed(2);
          }
 
@@ -212,9 +225,9 @@ for (let elem = 0; elem < inputs.length; elem++){
             sumH2.textContent = Number.isInteger(num) ? num : num.toFixed(2);
          }
          
-         if (o) {
-            o = String(o).split(',').join('.');
-            P = (353 / (273 + (Number(o))));
+         if (H) {
+            H = String(H).split(',').join('.');
+            P = (353 / (273 + (Number(H))));
             sumP.textContent = Number.isInteger(P) ? P : P.toFixed(2);
          }
 
@@ -252,12 +265,22 @@ for (let elem = 0; elem < inputs.length; elem++){
 }
 
 function allValue(item, value) {
-   let items = document.querySelectorAll(item);
-   for (let i = 0; i < items.length; i++){
-      const span = document.createElement('span');
-      span.textContent = value;
-      items[i].parentElement.append(span);
-      items[i].remove();
+   if (item == '[data-object-title]') {
+      let items = document.querySelectorAll(item);
+      for (let i = 0; i < items.length; i++){
+         const titleTwo = document.createElement('h2');
+         titleTwo.textContent = value;
+         items[i].parentElement.append(titleTwo);
+         items[i].remove();
+      }
+   } else {
+      let items = document.querySelectorAll(item);
+      for (let i = 0; i < items.length; i++){
+         const span = document.createElement('span');
+         span.textContent = value;
+         items[i].parentElement.append(span);
+         items[i].remove();
+      }
    }
 }
 
@@ -281,8 +304,5 @@ window.addEventListener('click', function (event) {
 });
 
 
-function copyHTML(item) {
-   let math = document.querySelectorAll('math')[item];
-   console.log(math);
-}
+
 
